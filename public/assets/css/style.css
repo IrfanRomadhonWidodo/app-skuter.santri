@@ -1,0 +1,161 @@
+:root{
+    --app-primary-1 : #353535;
+    --app-basic-1: #F4F6F9;
+    --app-white     : #fff; 
+
+    --primary-color: #029A51;
+    --secondary-color: #044D30;
+    --green-light-color: #C8DBD2;
+    --tertiary-color: #E4E4E4;
+    --color-white-1 : #FFFFFF;
+    --color-white-2 : #F8F9FA;
+
+
+
+    --muted : #6C757D;
+}
+
+body {
+    background-color: var(--app-basic-1);
+}
+.brand-link .brand-image{
+    position: relative;
+    left: 40%;
+    transform: translateX(-50%);
+    width: 120px !important;
+    height: auto;
+    max-height: max-content !important;
+}
+.brand-link .brand-text{
+    color: #fff;
+    font-weight: 700 !important;
+}
+
+.main-header{
+    background-color: var(--app-primary-1);
+}
+
+.main-header .nav-link{
+    color: var(--app-white) !important;
+}
+
+.main-sidebar{
+    background-color: var(--color-white-1);
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+}
+
+.layout-navbar-fixed.layout-fixed .wrapper .sidebar {
+    margin-top: calc(4rem + 1px);
+}
+
+.main-sidebar .nav-link:not(.active){
+    color: var(--secondary-color) !important;
+    background-color: var(--green-light-color);
+    font-weight: 700 !important;
+}
+
+
+
+.main-header .nav-treeview .nav-item .nav-link.active{
+    background-color: var(--primary-color) !important;
+    color: var(--color-white-1) !important;
+}
+
+.main-sidebar .sidebar-dropdown > .nav-link.active{
+    background-color: var(--app-basic-1) !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--color-white-1);
+    background-color: var(--primary-color) !important;
+}
+
+.main-sidebar .nav-link:not(.active):hover{
+    background-color: var(--primary-color) !important;
+    color: var(--color-white-1) !important;
+}
+.main-sidebar .nav-link.active:hover{
+    background-color: var(--secondary-color) !important;
+    color: var(--color-white-1) !important;
+}
+
+.layout-navbar-fixed .wrapper .content-wrapper {
+    margin-top: calc(0.5rem + 1px);
+}
+
+.table .thead-dark-custom{
+    background-color: var(--app-primary-1) !important;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.navbar {
+    margin: 0 5px;
+    height: 80px;
+    background-color: var(--white);
+}
+
+.navbar a,
+.navbar a .fa-bell
+{
+    color: var(--app-primary-1);
+}
+
+.navbar-wrapper {
+    background-color: var(--white);
+    width: 100%;
+}
+
+.navbar-notifikasi .fa-circle{
+    position: absolute;
+    left: 50%;
+    font-size: 12px;
+}
+
+
+.profil-name{
+    color: #000 !important;
+}
+
+.profil-name:hover{
+    color: var(--app-primary-1) !important;
+}
+
+.card-greeting{
+    background-color: #336899e0;
+    color: #fff;
+    border-radius: 20px;
+}
+
+
+
+.card-greeting .left{
+    padding: 30px 5px;
+}
+.card-greeting .right{
+    text-align: center;
+}
+.card-greeting .right img{
+    opacity: 0.7;
+}
+
+.card-greeting h5{
+    font-weight: bold;
+    font-size: 2rem;
+}
+.card-greeting p{
+    font-weight: 300;
+}
+
+.card-alert{
+    background-color: #029a511f;
+    border: none;
+    color: var(--secondary-color);
+    overflow: hidden;
+}
+
+
+.text-success{
+    color: var(--primary-color) !important;
+}
