@@ -290,7 +290,7 @@ trait RequestTrait
         }
 
         // Does the index contain array notation?
-        if (($count = preg_match_all('/(?:^[^\[]+)|\[[^]]*\]/', $index, $matches)) > 1) {
+        if (($count = preg_match_all('/(?:^[^\[]+)|\[[^]]*\]/', (string) $index, $matches)) > 1) {
             $value = $this->globals[$name];
 
             for ($i = 0; $i < $count; $i++) {

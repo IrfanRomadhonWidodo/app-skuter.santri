@@ -31,15 +31,18 @@ class Auth implements FilterInterface
         //
         helper('cookie');
         $jwt = get_cookie(getenv('app.jwt_cookie_name'));
-        if($jwt)
-        {
-            try{
-                JWT::decode($jwt, new Key(getenv('app.jwt_secret_key'), 'HS256'));    
-            }catch(Exception $e){
-                return redirect()->to(getenv('url.sso').'logout');
-            }
-        }else{
-            return redirect()->to(getenv('url.sso').'login');
+        $secretKey = getenv('app.jwt_secret_key');
+        $logoutUrl = getenv('url.sso') . 'logout';
+        $loginUrl = getenv('url.sso') . 'login';
+    
+        if (!$jwt) {
+            return redirect()->to($loginUrl);
+        }
+    
+        try {
+            JWT::decode($jwt, new Key($secretKey, 'HS256'));    
+        } catch (Exception $e) {
+            return redirect()->to($logoutUrl);
         }
       
     }

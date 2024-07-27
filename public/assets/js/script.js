@@ -144,7 +144,7 @@ function base_url() {
 function formatDate(dateString, format = 'YYYY-MM-DD') {
     // Periksa apakah dateString valid
     if (!moment(dateString).isValid()) {
-        return 'Invalid date';
+        return '<span class="text-danger">Invalid date</span>';
     }
 
     // Format tanggal menggunakan moment.js
@@ -161,3 +161,41 @@ function btnBack(id) {
         btn.html(btn.data('btn'));
     }, 1000);
 }
+
+function autosave(id)
+    {
+        let input = $(`#${id}`);
+        let value = input.val();
+        $.ajax({
+            url: input.data('url'),
+            method: 'POST',
+            data: {
+                'id': id,
+                'value': value
+            },
+            success: function (response) {
+                console.log(response);
+                let resp = JSON.parse(response);
+
+                if(resp['error'])
+                {
+                    $('#'+id).addClass('is-invalid');
+                    $('#'+id).removeClass('is-valid');
+                    setTimeout(() => {
+                        $('#'+id).removeClass('is-invalid');
+                    }, 1500);
+                    $('.error'+id).html(resp['error'][id]);   
+                }
+
+                if(resp['success'])
+                {
+                    $('#'+id).removeClass('is-invalid');
+                    $('#'+id).addClass('is-valid');
+                    setTimeout(() => {
+                        $('#'+id).removeClass('is-valid');
+                    }, 1500);
+                    $('.success'+id).html(resp['success'][id]);
+                }
+            }
+        })
+    }

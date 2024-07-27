@@ -28,6 +28,9 @@
             rel="stylesheet"/>
         <script
             src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <!-- Preload  -->
+        <link rel="preload" href="<?= base_url('file?file=/master/logo-santri-unu-purwokerto.png') ?>" as="image">
         <?= $this->renderSection('css') ?>
 
     </head>

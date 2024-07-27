@@ -105,3 +105,13 @@ function convertToWhatsAppFormat($phoneNumber) {
     
     return $phoneNumber;
 }
+
+if (!function_exists('getNameFileShared')) {
+    function getNameFileShared($name_file)
+    {
+		$file_exp 		= explode('/', $name_file);
+		$get_row_name 	= count($file_exp) - 1;
+		$file_name 		= $file_exp[$get_row_name];
+		return $file_name;
+    }
+}

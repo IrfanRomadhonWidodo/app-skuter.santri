@@ -18,8 +18,6 @@ if ($uri_3 != false) {
     $uri_4 = $uri->getSegment(4);
 }
 
-
-
 ?>
 
 <aside class="main-sidebar sidebar-primary">
@@ -30,15 +28,11 @@ if ($uri_3 != false) {
         <img
             src="<?= base_url('file?file=/master/logo-santri-unu-purwokerto.png') ?>"
             alt="Logo Santri UNU Purwokerto"
-            class="brand-image shadow-none">
+            class="brand-image shadow-none" >
     </a>
-
     <!-- Sidebar -->
-
     <div class="sidebar">
-
         <nav>
-
             <ul
                 class="nav nav-pills nav-sidebar flex-column"
                 data-widget="treeview"
@@ -62,189 +56,44 @@ if ($uri_3 != false) {
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">Akademik</li>
                 <li class="nav-item">
                     <a
-                        href="<?= base_url('periode-akademik') ?>"
-                        class="nav-link  <?= $uri_1 == 'periode-akademik' ? 'active' : '' ?>">
-                        <i class="fas fa-calendar-alt nav-icon"></i>
+                        href="<?= base_url('taskboard') ?>"
+                        class="nav-link  <?= $uri_1 == 'taskboard' ? 'active' : '' ?>">
+                        <i class="fas fa-tasks nav-icon"></i>
                         <p>
-                            Periode Akademik
+                            Taskboard
                         </p>
                     </a>
                 </li>
+                <li class="nav-header">KAS</li>
                 <li class="nav-item">
                     <a
-                        href="<?= base_url('fakultas') ?>"
-                        class="nav-link  <?= $uri_1 == 'fakultas' ? 'active' : '' ?>">
-                        <i class="fas fa-university nav-icon"></i>
+                        href="<?= base_url('pengajuan-kas') ?>"
+                        class="nav-link  <?= $uri_1 == 'pengajuan-kas' ? 'active' : '' ?>">
+                        <i class="fas fa-mail-bulk nav-icon"></i>
                         <p>
-                            Fakultas & Studi
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url('mata-kuliah') ?>"
-                        class="nav-link  <?= $uri->getSegment(1) == 'mata-kuliah' ? 'active' : '' ?>">
-                        <i class="fas fa-book-open nav-icon"></i>
-                        <p>
-                            Mata Kuliah
+                            Pengajuan
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a
-                        href="<?= base_url('set-nilai') ?>"
-                        class="nav-link  <?= $uri->getSegment(1) == 'set-nilai' ? 'active' : '' ?>">
-                        <i class="fas fa-book nav-icon"></i>
+                        href="<?= base_url('laporan') ?>"
+                        class="nav-link  <?= $uri_1 == 'laporan' ? 'active' : '' ?>">
+                        <i class="fas fa-chart-line nav-icon"></i>
                         <p>
-                            Set Nilai
+                            Laporan
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a
-                        href="<?= base_url('ruang-kelas') ?>"
-                        class="nav-link  <?= $uri->getSegment(1) == 'ruang-kelas' ? 'active' : '' ?>">
-                        <i class="fab fa-discourse nav-icon"></i>
+                        href="<?= base_url('approver-setting') ?>"
+                        class="nav-link  <?= $uri_1 == 'approver-setting' ? 'active' : '' ?>">
+                        <i class="fas fa-user-ninja nav-icon"></i>
                         <p>
-                            Kelas
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url() ?>"
-                        class="nav-link  <?= $uri_1 == 'user' ? 'active' : '' ?>">
-                        <i class="fab fa-joomla nav-icon"></i>
-                        <p>
-                            Kelas Mata Kuliah
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-header">Pengguna & Otorisasi</li>
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url('mahasiswa') ?>"
-                        class="nav-link  <?= $uri_1 == 'mahasiswa' ? 'active' : '' ?>">
-                        <i class="fas fa-user-graduate nav-icon"></i>
-                        <p>
-                            Mahasiswa
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url('dosen') ?>"
-                        class="nav-link  <?= $uri_1 == 'dosen' ? 'active' : '' ?>">
-                        <i class="fas fa-chalkboard-teacher nav-icon"></i>
-                        <p>
-                            Dosen
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url('pegawai') ?>"
-                        class="nav-link  <?= $uri_1 == 'pegawai' ? 'active' : '' ?>">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p>
-                            Pegawai
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item <?= $uri_1 == 'permission' ? 'menu-open' : '' ?> ">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-low-vision nav-icon"></i>
-                        <p>
-                            Hak Akses
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a
-                                href="<?= base_url('permission') ?>"
-                                class="nav-link <?= $uri_1 == 'permission' && $uri_2 == null ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Permission</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                href="<?= base_url('permission/group') ?>"
-                                class="nav-link <?= $uri_1 == 'permission' && $uri_2 == 'group' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Group</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                href="<?= base_url('permission/user-permission') ?>"
-                                class="nav-link <?= $uri_1 == 'permission' && $uri_2 == 'user-permission' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>User Permission</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-header">Kepegawaian</li>
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url('unit-kerja') ?>"
-                        class="nav-link  <?= $uri_1 == 'unit-kerja' ? 'active' : '' ?>">
-                        <i class="fas fa-cube nav-icon"></i>
-                        <p>
-                            Unit Kerja
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url('jabatan') ?>"
-                        class="nav-link  <?= $uri_1 == 'jabatan' ? 'active' : '' ?>">
-                        <i class="fas fa-user-tag nav-icon"></i>
-                        <p>
-                            Jabatan
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-header">Konfigurasi Sistem</li>
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url() ?>"
-                        class="nav-link  <?= $uri_1 == 'user' ? 'active' : '' ?>">
-                        <i class="fas fa-money-check-alt nav-icon"></i>
-                        <p>
-                            Tagihan
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('terjemahan') ?>" class="nav-link  <?= $uri_1 == 'terjemahan' ? 'active' : '' ?>">
-                        <i class="fas fa-language nav-icon"></i>
-                        <p>
-                            Bahasa
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        href="<?= base_url() ?>"
-                        class="nav-link  <?= $uri_1 == 'user' ? 'active' : '' ?>">
-                        <i class="fab fa-medapps nav-icon"></i>
-                        <p>
-                            Aplikasi
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('auth-slider') ?>" class="nav-link  <?= $uri_1 == 'auth-slider' ? 'active' : '' ?>">
-                        <i class="far fa-images nav-icon"></i>
-                        <p>
-                            Auth Slider
+                            Approver Setting
                         </p>
                     </a>
                 </li>
