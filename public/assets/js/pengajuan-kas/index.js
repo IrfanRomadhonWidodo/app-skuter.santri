@@ -16,6 +16,9 @@ table = $('#table-pengajuan-kas').DataTable({
             return json.data;
         }
     },
+    "order": [
+        [0, 'desc']
+    ],
     "deferRender": true,
     "aLengthMenu": [
         [
@@ -38,12 +41,16 @@ table = $('#table-pengajuan-kas').DataTable({
             "class": "text-nowrap",
             "sortable": false,
             "render": function (data, type, row, meta) {
-                let btnEdit = `<button class="btn btn-success btn-sm mb-1 mr-1" data-url="${base_url() + 'p' +
-                        'eriode-akademik/' + data + '/modal-edit'}"
-                    data-method="post" id="btnEdit-${data.replace(
-                    /\./g,
-                    ""
-                )}" onclick="return viewModal('btnEdit-${data.replace(/\./g, "")}' , false)"
+                let btnDetail = `<button class="btn btn-primary btn-sm mb-1 mr-1" data-url="${base_url() + 
+                'pengajuan-kas/d/' + data }" id="btnDetail-${data.replace(/\./g,"")}" 
+                onclick="return movePage('btnDetail-${data.replace(/\./g, "")}' , true)"
+                data-btn="<i class='fas fa-search mr-1'></i>Detail">
+                <i class="fas fa-search mr-1"></i>Detail</button>`
+
+                let btnEdit = `<button class="btn btn-success btn-sm mb-1 mr-1" 
+                    data-url="${base_url() + 'pengajuan-kas/' + data}"
+                    id="btnEdit-${data.replace(/\./g,"")}" 
+                    onclick="return movePage('btnEdit-${data.replace(/\./g, "")}' , false)"
                     data-btn="<i class='fas fa-edit'></i>"
                     ><i class="fas fa-edit"></i></button>`
 
@@ -56,17 +63,20 @@ table = $('#table-pengajuan-kas').DataTable({
                     data-btn="<i class='fas fa-trash'></i>"
                     ><i class="fas fa-trash"></i></button>`
 
-                return btnEdit + btnDelete;
+                if(row['kas_status'] == '0'){
+                    return btnEdit + btnDelete;
+                }else if(row['kas_status'] == '1'){
+                    return btnDetail + btnEdit + btnDelete;
+                }
             }
         }, {
-            "data": "kas_judul"
+            "data": "kas_judul",
+            "class": "text-nowrap",
         }, {
             "data": "kas_nomor_pengajuan"
         }, {
-            "data": "usr_nama",
+            "data": "unkj_nama",
             "class": "text-nowrap"
-        }, {
-            "data": "unkj_nama"
         }, {
             "data": "kas_submited_date",
             "render": function (data, type, row, meta) {
@@ -80,11 +90,29 @@ table = $('#table-pengajuan-kas').DataTable({
         }, {
             "data": "kas_status",
             "render": function (data, type, row, meta) {
-                return data;
+                return statusKas(data);
             }
         }
     ]
 });
+
+function statusKas(statusCode)
+{
+    switch (statusCode) {
+        case '0':
+            return '<span class="badge badge-dark">Draft</span>';
+            break;
+        case '1':
+            return '<span class="badge badge-success">Submited</span>';
+            break;
+        case '2':
+            return '<span class="badge badge-secondary>Canceled</span>';
+            break;
+        default:
+            return 'Unknown';
+            break;
+    }
+}
 
 function reloadDatatables() {
     table

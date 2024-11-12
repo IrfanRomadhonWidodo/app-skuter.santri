@@ -82,7 +82,45 @@ abstract class BaseController extends Controller
         }else{
             return redirect()->to(getenv('url.sso').'login');
         }
+
+        $grp_id = $this->request->getGet('grp_id');
+        if ($grp_id) {
+            $authUserGroupModel = new \App\Models\AuthUserGroupModel();
+
+            $userGroup = $authUserGroupModel->getData([
+                'where' => [
+                    'usr_id' => session()->usr_id
+                ],
+                'select' => [
+                    'grp_label',
+                    'grp_nama',
+                    'grp_id',
+                    'grp_apk_id'
+                ]
+            ]);
+            if(!empty($userGroup))
+                $this->setUserGroupList(json_encode($userGroup));
+            
+            $this->setUserGroup($userGroup[0]['grp_label']);
+        }
         // E.g.: $this->session = \Config\Services::session();
+    }
+
+    
+    public function setUserGroupList($userGroupList)
+    {
+        session()->set('userGroupList', $userGroupList);
+    }
+
+    public function setUserGroup(string $userGroup)
+    {
+        $userGroupList = session()->get('userGroupList');
+        $userGroupList = json_decode($userGroupList, true) ?? [];
+        if (array_search($userGroup, array_column($userGroupList, 'grp_label')) !== false) {
+            session()->set('userGroup', $userGroup);
+        }else{
+            session()->set('userGroup', 'guest');
+        }
     }
 
     public function create_uuid($prefix = null)
@@ -135,7 +173,7 @@ abstract class BaseController extends Controller
     
     public function deleteCookies()
     {
-        setcookie(getenv('app.jwt_cookie_name'),'' , time() - getenv('app.jwt_ cookie_expire'), getenv('app.jwt_cookie_path'), getenv('app.jwt_cookie_domain'), false, true);
+        setcookie(getenv('app.jwt_cookie_name'),'' , time() - getenv('app.jwt_cookie_expire'), getenv('app.jwt_cookie_path'), getenv('app.jwt_cookie_domain'), false, true);
     }
 
     protected function verifyPassword(string $password, string $hashPassword)

@@ -26,7 +26,7 @@ if ($uri_3 != false) {
 
     <a href="<?= base_url() ?>" class="brand-link text-center">
         <img
-            src="<?= base_url('file?file=/master/logo-santri-unu-purwokerto.png') ?>"
+            src="<?= base_url('assets/files/logo-santri-unu-purwokerto.png') ?>"
             alt="Logo Santri UNU Purwokerto"
             class="brand-image shadow-none" >
     </a>
@@ -79,6 +79,16 @@ if ($uri_3 != false) {
                 </li>
                 <li class="nav-item">
                     <a
+                        href="<?= base_url('pencairan') ?>"
+                        class="nav-link  <?= $uri_1 == 'pencairan' ? 'active' : '' ?>">
+                        <i class="fas fa-hand-holding-usd nav-icon"></i>
+                        <p>
+                            pencairan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
                         href="<?= base_url('laporan') ?>"
                         class="nav-link  <?= $uri_1 == 'laporan' ? 'active' : '' ?>">
                         <i class="fas fa-chart-line nav-icon"></i>
@@ -89,11 +99,11 @@ if ($uri_3 != false) {
                 </li>
                 <li class="nav-item">
                     <a
-                        href="<?= base_url('approver-setting') ?>"
-                        class="nav-link  <?= $uri_1 == 'approver-setting' ? 'active' : '' ?>">
+                        href="<?= base_url('setting') ?>"
+                        class="nav-link  <?= $uri_1 == 'setting' ? 'active' : '' ?>">
                         <i class="fas fa-user-ninja nav-icon"></i>
                         <p>
-                            Approver Setting
+                            Setting
                         </p>
                     </a>
                 </li>

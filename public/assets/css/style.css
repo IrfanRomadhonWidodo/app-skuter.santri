@@ -97,7 +97,8 @@ body {
 }
 
 .navbar a,
-.navbar a .fa-bell
+.navbar a .fa-bell,
+.navbar a .fa-user-tag
 {
     color: var(--app-primary-1);
 }

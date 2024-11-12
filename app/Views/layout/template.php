@@ -12,9 +12,13 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="<?= base_url('assets/vendor/fontawesome/css/all.min.css') ?>">
+        <link
+            rel="stylesheet"
+            href="<?= base_url('assets/vendor/fontawesome/css/all.min.css') ?>">
         <!-- Theme style -->
-        <link rel="stylesheet" href="<?= base_url('assets/vendor/adminlte/css/adminlte.min.css') ?>">
+        <link
+            rel="stylesheet"
+            href="<?= base_url('assets/vendor/adminlte/css/adminlte.min.css') ?>">
         <!-- Custom style -->
         <link rel="stylesheet" href="<?= base_url('assets/css/style.css?v='.time()) ?>">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -29,8 +33,11 @@
         <script
             src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-        <!-- Preload  -->
-        <link rel="preload" href="<?= base_url('file?file=/master/logo-santri-unu-purwokerto.png') ?>" as="image">
+        <!-- Preload -->
+        <link
+            rel="preload"
+            href="<?= base_url('file?file=/master/logo-santri-unu-purwokerto.png') ?>"
+            as="image">
         <?= $this->renderSection('css') ?>
 
     </head>
@@ -54,6 +61,23 @@
                                 <i class="fas fa-bell" style="font-size: 30px"></i>
                                 <i class="fas fa-circle" style="color: #FC6C6C;"></i>
                             </a>
+                        </li>
+                        <li class="nav-item dropdown navbar-notifikasi">
+                            <a
+                                class="nav-link"
+                                href="#"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fas fa-user-tag"  style="font-size: 30px"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <?php foreach(json_decode(session()->get('userGroupList'), true)  as $userGroup) : ?>
+                                <a
+                                    class="dropdown-item"
+                                    href="<?= base_url('move-group/' . $userGroup['grp_id'] . '/') ?>"><?= $userGroup['grp_nama'] ?><?= session()->get('userGroup') == $userGroup['grp_label'] ? '<i class="fas fa-check-square text-success"></i>' : '' ?></a>
+                                <?php endforeach ?>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <div class="row">
@@ -99,7 +123,7 @@
                 <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
-           <div class="viewmodal"></div>
+            <div class="viewmodal"></div>
             <!-- Main Footer -->
             <footer class="main-footer border-0">
                 <strong>Copyright &copy;
@@ -117,12 +141,14 @@
         <!-- REQUIRED SCRIPTS -->
         <script src="<?= base_url('assets/js/script.js?v='.time()) ?>"></script>
         <!-- Bootstrap -->
-        <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+        <script
+            src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url('assets/vendor/adminlte/js/adminlte.js') ?>"></script>
         <script src="<?= base_url() ?>/assets/vendor/DataTables/datatables.min.js"></script>
         <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
         <?= $this->renderSection('js') ?>
         <script>

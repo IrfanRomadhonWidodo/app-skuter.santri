@@ -84,7 +84,6 @@
                     <th class="text-nowrap">Aksi</th>
                     <th class="text-nowrap">Judul</th>
                     <th class="text-nowrap">Nomor Pengajuan</th>
-                    <th class="text-nowrap">Pengusul</th>
                     <th class="text-nowrap">Unit</th>
                     <th class="text-nowrap">Tanggal Submit</th>
                     <th class="text-nowrap">Tahun Anggaran</th>

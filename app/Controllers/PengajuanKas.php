@@ -32,8 +32,49 @@ class PengajuanKas extends BaseController
             'page'  => 'Pengajuan KAS',
             'breadcrumbs' => $this->breadcrumb->render(),
         ];
-
         return view('pengajuan-kas/index', $data);
+    }
+
+    public function detail($kas_id): string
+    {
+        $this->breadcrumb->add('Pengajuan KAS', '/penngajuan-kas');
+        $this->breadcrumb->add('Detail', '/pengajuan-kas/' . $kas_id);
+
+
+        $pengajuan = $this->kasModel->gets([
+            'where' => [
+                'kas_id' => $kas_id
+            ]
+        ], true);
+
+        $data = [
+            'title' => getenv('app.name') . ' - Detail Pengajuan KAS',
+            'page'  => 'Detail Pengajuan KAS',
+            'breadcrumbs' => $this->breadcrumb->render(),
+            'pengajuan' => $pengajuan
+        ];
+        return view('pengajuan-kas/detail', $data);
+    }
+
+    public function persetujuan($kas_id): string
+    {
+        $this->breadcrumb->add('Pengajuan KAS', '/penngajuan-kas');
+        $this->breadcrumb->add('Persetujuan', '/pengajuan-kas/' . $kas_id);
+
+
+        $pengajuan = $this->kasModel->gets([
+            'where' => [
+                'kas_id' => $kas_id
+            ]
+        ], true);
+
+        $data = [
+            'title' => getenv('app.name') . ' - Persetujuan Pengajuan KAS',
+            'page'  => 'Persetujuan Pengajuan KAS',
+            'breadcrumbs' => $this->breadcrumb->render(),
+            'pengajuan' => $pengajuan
+        ];
+        return view('pengajuan-kas/persetujuan', $data);
     }
 
     public function createDraft(): string
@@ -41,7 +82,6 @@ class PengajuanKas extends BaseController
         if ($this->request->isAJAX()) {
             $data = [
                 'kas_id'        => $this->create_uuid(),
-                'kas_usr_id'    => session()->usr_id,
                 'kas_created_by'=> session()->usr_id,
             ];
             try {
@@ -212,20 +252,6 @@ class PengajuanKas extends BaseController
     }
 
 
-    public function delete($mk_id)
-    {
-        if ($this->request->isAJAX()) {
-            $this->mataKuliahModel->delete($mk_id);
-
-            $msg = [
-                'success' => [
-                    'msg' => 'Berhasil menghapus data mata kuliah.',
-                ]
-            ];
-            return json_encode($msg);
-        }
-    }
-
     public function datatables()
     {
         if ($this->request->isAJAX()) {
@@ -237,17 +263,14 @@ class PengajuanKas extends BaseController
                 'order_column'  => isset($_POST['order'][0]['column']) ? $_POST['columns'][$_POST['order'][0]['column']]['data'] : '',
                 'order_dir'     => isset($_POST['order'][0]['dir']) ? $_POST['order'][0]['dir'] : '',
                 'whereIn'       => ['kas_status' => ['0', '1']],
-                'where'         => [
-                    'kas_usr_id' => session()->usr_id
-                ]
             ];
-            $lists = $this->kasModel->getDatatables($params);
 
-            $lists = array_map(function ($list) {
-                if($list['kas_submited_date'] != null) $list['kas_submited_date'] = date('d-m-Y', strtotime($list['kas_submited_date']));
-                $list['kas_status'] = statusKas($list['kas_status']);
-                return $list;
-            }, $lists);
+            if($params['order'][0]['column'] == '0')
+            {
+                $params['order_column'] = 'kas_created_at';
+            }
+            
+            $lists = $this->kasModel->getDatatables($params);
 
             $output = [
                 'draw'              => $this->request->getPost('draw'),

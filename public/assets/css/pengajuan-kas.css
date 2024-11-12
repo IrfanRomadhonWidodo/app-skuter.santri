@@ -1,0 +1,73 @@
+
+.step-pengajuan-kas {
+    margin: 10px;
+}
+
+.step-pengajuan-kas p {
+    color: #148e14;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+
+.step-pengajuan-kas ul {
+    text-align: center;
+}
+
+.step-pengajuan-kas ul li {
+    display: inline-block;
+    width: 200px;
+    position: relative;
+
+}
+
+.step-pengajuan-kas ul li .fa-stack {
+    /* background: #ccc; */
+    position: relative;
+    height: 30px;
+    z-index: 99 !important;
+}
+.step-pengajuan-kas ul li .fa-stack .fa-check,
+.step-pengajuan-kas ul li .fa-stack .fa-circle,
+.step-pengajuan-kas ul li .fa-stack .fa-sync,
+.step-pengajuan-kas ul li .fa-stack .fa-times {
+    /* background: #ccc; */
+    z-index: 99 !important;
+}
+
+.step-pengajuan-kas ul li .fa-stack::after {
+    content: '';
+    background-color: #ccc;
+    border-radius: 20px;
+    height: 10px;
+    width: 210px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1 !important;
+}
+
+.step-pengajuan-kas ul li .fa-stack .fa-circle {
+    color: #ccc;
+}
+.step-pengajuan-kas ul li.active .fa-stack .fa-circle {
+    color: #148e14 !important;
+    transform: scale(1.4);
+}
+
+.step-pengajuan-kas ul li.coming img {
+    filter: grayscale(100%);
+}
+
+.step-pengajuan-kas ul li.active .fa-stack::after {
+    background-color: #148e14;
+}
+
+.step-pengajuan-kas ul li.visited .fa-stack .fa-circle {
+    color: #60aa97;
+}
+.step-pengajuan-kas ul li.visited .fa-stack::after {
+    background-color: #60aa97;
+}
