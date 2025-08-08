@@ -7,7 +7,8 @@
 <div class="card collapsed-card">
     <div class="card-header">
         <h3 class="card-title">
-            <i class="fas fa-filter mr-1"></i>Filter</h3>
+            <i class="fas fa-filter mr-1"></i>Filter
+        </h3>
         <div class="card-tools">
             <button class="btn btn-tool">
                 <i class="fas fa-sync mr-1"></i></button>
@@ -26,7 +27,7 @@
                     </select>
                     <div class="invalid-feedback "></div>
                 </div>
-            </div>    
+            </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Status Pengajuan</label>
@@ -38,7 +39,7 @@
                     </select>
                     <div class="invalid-feedback "></div>
                 </div>
-            </div>    
+            </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Unit</label>
@@ -50,8 +51,8 @@
                     </select>
                     <div class="invalid-feedback "></div>
                 </div>
-            </div>    
-    </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="card">
@@ -76,17 +77,15 @@
         <table
             class="table table-bordered table-hover table-sm"
             id="table-pengajuan-kas"
-            data-url="<?= base_url('pengajuan-kas/datatables') ?>"
+            data-url="<?= base_url('pembayaran-spp/datatables') ?>"
             data-method="post">
             <thead class="thead-dark">
                 <tr>
                     <th class="text-nowrap">#</th>
-                    <th class="text-nowrap">Aksi</th>
-                    <th class="text-nowrap">Judul</th>
-                    <th class="text-nowrap">Nomor Pengajuan</th>
-                    <th class="text-nowrap">Unit</th>
-                    <th class="text-nowrap">Tanggal Submit</th>
-                    <th class="text-nowrap">Tahun Anggaran</th>
+                    <th class="text-nowrap">ID Mahasiswa</th>
+                    <th class="text-nowrap">Nama Mahasiswa</th>
+                    <th class="text-nowrap">Prodi</th>
+                    <th class="text-nowrap">Semester</th>
                     <th class="text-nowrap">Status</th>
                 </tr>
             </thead>
@@ -97,6 +96,5 @@
 <?= $this->endSection() ?>
 <?= $this->section('js') ?>
 
-<script src="<?= base_url('assets/js/pengajuan-kas/index.js?v='.time()) ?>",script>
-
-<?= $this->endSection() ?>
+<script src="<?= base_url('assets/js/pengajuan-kas/index.js?v=' . time()) ?>" ,script>
+    <?= $this->endSection() ?>

@@ -1,12 +1,71 @@
 <?php
 
+namespace Config;
+
+// Create a new instance of our RouteCollection class.
+$routes = Services::routes();
+
+// Load the system's routing file first, so that the app and ENVIRONMENT
+// can override as needed.
+if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
+    require SYSTEMPATH . 'Config/Routes.php';
+}
+
 use CodeIgniter\Router\RouteCollection;
+
+
 
 /**
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('/file', 'File::file_shared');
+$routes->get('/file', 'File::file_doang');
+$routes->get('/file', 'File::file_doang');
+
+
+// ========================
+// ROUTING PEMBAYARAN SPP
+// ========================
+
+// Halaman utama dashboard pembayaran
+$routes->get('/', 'PembayaranSPP::spp');
+$routes->get('pembayaranspp', 'PembayaranSPP::spp');
+$routes->get('pembayaran-spp', 'PembayaranSPP::spp'); // alias opsional
+
+// Tambah data pembayaran
+$routes->post('pembayaranspp/tambah', 'PembayaranSPP::tambah');
+
+// Lihat data berdasarkan status pembayaran
+$routes->get('detail/lunas', 'PembayaranSPP::detailLunas');
+$routes->get('detail/cicilan', 'PembayaranSPP::detailCicilan');
+$routes->get('detail/belum', 'PembayaranSPP::detailBelum');
+
+// Edit, Update, Hapus Data
+// Gunakan (:segment) agar mendukung NIM non-numerik
+$routes->get('pembayaranspp/edit/(:segment)', 'PembayaranSPP::edit/$1');
+$routes->post('pembayaranspp/update/(:segment)', 'PembayaranSPP::update/$1');
+$routes->get('pembayaranspp/hapus/(:segment)', 'PembayaranSPP::hapus/$1');
+
+// Pengeluaran - Kas Besar
+$routes->get('/kas-besar', 'KasBesar::kasbesar');
+
+// Pengeluaran - Kas Kecil
+$routes->get('/kas-kecil', 'KasKecil::kaskecil');
+
+// Penggajian - Dosen
+$routes->get('/penggajian-dosen', 'PenggajianDosen::gajidosen');
+
+// Penggajian - Staff
+$routes->get('/penggajian-staff', 'PenggajianStaff::gajistaff');
+
+// Laporan - Laba Rugi
+$routes->get('/laporan-laba-rugi', 'LabaRugi::labarugi');
+
+// Laporan - Aktiva
+$routes->get('/laporan-aktiva', 'LaporanAktiva::aktiva');
+
+// Laporan - Pasiva
+$routes->get('/laporan-pasiva', 'LaporanPasiva::pasiva');
 
 // CSRF
 $routes->post('/reload-csrf', 'CSRFControl::reload');
@@ -53,3 +112,8 @@ $routes->post('/setting/approver-pencairan/(:segment)/update', 'SettingApproverP
 $routes->delete('/setting/approver-pencairan/(:segment)/delete', 'SettingApproverPencairan::delete/$1', ['filter' => 'auth']);
 
 $routes->get('/move-group/(:segment)', 'Auth::moveGroup/$1', ['filter' => 'auth']);
+
+
+if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
+    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+}

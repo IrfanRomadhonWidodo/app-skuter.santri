@@ -4,11 +4,11 @@ namespace App\Controllers;
 
 class File extends BaseController
 {
-    public function file_shared()
+    public function file_doang()
     {
         $file = $this->request->getGet("file");
         $path = realpath(getSharedDirectory() . $file);
-        if(!file_exists($path)){
+        if (!file_exists($path)) {
             echo 'file tidak ditemukan';
         }
         return $this->response->download($path, null);
@@ -18,7 +18,7 @@ class File extends BaseController
     {
         $path = realpath(getSharedDirectory() . 'template.xlsx');
         // dd($path); 
-        if(file_exists($path)){
+        if (file_exists($path)) {
             echo 'file ditemukan';
         }
         return $this->response->download($path, null);

@@ -2,21 +2,20 @@
 <?= $this->section('css') ?>
 
 <style>
-    
-.card-alert{
-    border-radius: 10px;
-    background-color: #029a511f;
-    border: none;
-    color: var(--secondary-color);
-    overflow: hidden;
-}
+    .card-alert {
+        border-radius: 10px;
+        background-color: #029a511f;
+        border: none;
+        color: var(--secondary-color);
+        overflow: hidden;
+    }
 
-.card-alert img{
-    width: 250px;
-    position: absolute;
-    left: 30%;
-    top: -25px;
-}
+    .card-alert img {
+        width: 250px;
+        position: absolute;
+        left: 30%;
+        top: -25px;
+    }
 </style>
 
 <?= $this->endSection() ?>

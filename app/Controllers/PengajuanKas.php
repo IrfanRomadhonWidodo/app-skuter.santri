@@ -82,7 +82,7 @@ class PengajuanKas extends BaseController
         if ($this->request->isAJAX()) {
             $data = [
                 'kas_id'        => $this->create_uuid(),
-                'kas_created_by'=> session()->usr_id,
+                'kas_created_by' => session()->usr_id,
             ];
             try {
                 $this->kasModel->insert($data);
@@ -121,8 +121,7 @@ class PengajuanKas extends BaseController
         try {
             $kas = $this->kasModel->gets($params, true);
             $unit = $this->unitKerjaModel->findAll();
-        }catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
@@ -139,15 +138,14 @@ class PengajuanKas extends BaseController
 
     public function autosave($kas_id)
     {
-        if($this->request->isAJAX())
-        {
+        if ($this->request->isAJAX()) {
             $id = $this->request->getPost('id');
             $value = $this->request->getPost('value');
 
             $data = [
                 $id => $value
             ];
-            try{
+            try {
                 $this->kasModel->update($kas_id, $data);
                 $msg = [
                     'success' => [
@@ -155,8 +153,7 @@ class PengajuanKas extends BaseController
                     ]
                 ];
                 return json_encode($msg);
-            }catch(\Exception $e)
-            {
+            } catch (\Exception $e) {
                 $msg = [
                     'error' => [
                         $id => 'Gagal mengubah data, silahkan coba lagi',
@@ -167,10 +164,9 @@ class PengajuanKas extends BaseController
         }
     }
 
-    public function submit($kas_id) :string
+    public function submit($kas_id)
     {
-        if($this->request->isAJAX())
-        {
+        if ($this->request->isAJAX()) {
             $required = [
                 'kas_judul',
                 'kas_keterangan',
@@ -182,27 +178,23 @@ class PengajuanKas extends BaseController
                 $kas = $this->kasModel->find($kas_id);
                 $kasBerkas = $this->kasBerkasModel->where('kas_bks_kas_id', $kas_id)->findAll();
                 $periode = $this->periodeModel->where('prd_aktif', 1)->first();
-            }catch(\Exception $e)
-            {
+            } catch (\Exception $e) {
                 $msg = [
                     'error' => [
-                        'msg' => 'Gagal mengirim pengajuan, silahkan coba lagi, Error code : TC001 - '. $e->getMessage(),
+                        'msg' => 'Gagal mengirim pengajuan, silahkan coba lagi, Error code : TC001 - ' . $e->getMessage(),
                     ]
                 ];
                 return json_encode($msg);
             }
-            
+
             $error = false;
-            foreach($required as $r)
-            {
-                if($kas[$r] == null)
-                {
+            foreach ($required as $r) {
+                if ($kas[$r] == null) {
                     $error = true;
                 }
             }
 
-            if($error)
-            {
+            if ($error) {
                 $msg = [
                     'error' => [
                         'msg' => 'Gagal mengirim pengajuan, silahkan coba lagi',
@@ -212,8 +204,7 @@ class PengajuanKas extends BaseController
                 return json_encode($msg);
             }
 
-            if(empty($kasBerkas))
-            {
+            if (empty($kasBerkas)) {
                 $msg = [
                     'error' => [
                         'msg' => 'Silahkan tambahkan berkas terlebih dahulu, minimal 1 berkas',
@@ -230,15 +221,14 @@ class PengajuanKas extends BaseController
             ];
             try {
                 $this->kasModel->update($kas_id, $data);
-            }catch(\Exception $e)
-            {
+            } catch (\Exception $e) {
                 $msg = [
                     'error' => [
-                        'msg' => 'Gagal mengirim pengajuan, silahkan coba lagi, Error code : TC002 - '. $e->getMessage(),
+                        'msg' => 'Gagal mengirim pengajuan, silahkan coba lagi, Error code : TC002 - ' . $e->getMessage(),
                     ]
                 ];
                 return json_encode($msg);
-            }   
+            }
 
             $msg = [
                 'success' => [
@@ -247,7 +237,6 @@ class PengajuanKas extends BaseController
                 ]
             ];
             return json_encode($msg);
-
         }
     }
 
@@ -265,11 +254,10 @@ class PengajuanKas extends BaseController
                 'whereIn'       => ['kas_status' => ['0', '1']],
             ];
 
-            if($params['order'][0]['column'] == '0')
-            {
+            if ($params['order'][0]['column'] == '0') {
                 $params['order_column'] = 'kas_created_at';
             }
-            
+
             $lists = $this->kasModel->getDatatables($params);
 
             $output = [
