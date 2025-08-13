@@ -63,7 +63,7 @@ if ($uri_3 != false) {
                     <a href="#" class="nav-link">
                         <i class="fas fa-dumpster nav-icon"></i>
                         <p>
-                            Pemasukan
+                            Penerimaan
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -71,13 +71,19 @@ if ($uri_3 != false) {
                         <li class="nav-item">
                             <a href="<?= base_url('pembayaran-spp') ?>" class="nav-link <?= $uri_1 == 'pembayaran-spp' && $uri_2 == null ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Pembayaran SPP</p>
+                                <p>Pembayaran Tagihan</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('view-kip') ?>" class="nav-link <?= $uri_1 == 'view-kip' && $uri_2 == '' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>KIP</p>
+                                <p>Tagihan SPP</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('riwayat-pembayaran') ?>" class="nav-link <?= $uri_1 == 'riwayat-pembayaran' && $uri_2 == '' ? 'active' : '' ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Riwayat Pembayaran</p>
                             </a>
                         </li>
                     </ul>
@@ -85,10 +91,10 @@ if ($uri_3 != false) {
 
                 <!-- Pengajuan -->
                 <li class="nav-item">
-                    <a href="<?= base_url('pengajuan-kas') ?>" class="nav-link  <?= $uri->getSegment(1) == 'pengajuan-kas' ? 'active' : '' ?>">
+                    <a href="<?= base_url('anggaran-belanja') ?>" class="nav-link  <?= $uri->getSegment(1) == 'anggaran-belanja' ? 'active' : '' ?>">
                         <i class="fas fa-book-open nav-icon"></i>
                         <p>
-                            Pengajuan
+                            Anggaran Belanja/Pengeluaran
                         </p>
                     </a>
                 </li>
@@ -113,6 +119,12 @@ if ($uri_3 != false) {
                             <a href="<?= base_url('kas-kecil') ?>" class="nav-link <?= $uri_1 == 'kas-kecil' && $uri_2 == '' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kas Kecil</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('kas-kecil') ?>" class="nav-link <?= $uri_1 == 'kas-kecil' && $uri_2 == '' ? 'active' : '' ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Penggajian</p>
                             </a>
                         </li>
                     </ul>
@@ -142,45 +154,7 @@ if ($uri_3 != false) {
                         </li>
                     </ul>
                 </li>
-
-                <!-- Laporan -->
-                <li class="nav-item <?= $uri_1 == '' ? 'menu-open' : '' ?> ">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-server nav-icon"></i>
-                        <p>
-                            Laporan
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('laporan-laba-rugi') ?>" class="nav-link <?= $uri_1 == 'laporan-laba-rugi' && $uri_2 == null ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporan Laba Rugi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('penggajian-staff') ?>" class="nav-link <?= $uri_1 == 'penggajian-staff' && $uri_2 == '' ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Laporan Neraca</p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="<?= base_url('laporan-aktiva') ?>" class="nav-link <?= $uri_1 == 'laporan-aktiva' && $uri_2 == null ? 'active' : '' ?>">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Aktiva</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?= base_url('laporan-pasiva') ?>" class="nav-link <?= $uri_1 == 'laporan-pasiva' && $uri_2 == '' ? 'active' : '' ?>">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Pasiva</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- User -->
+                <!-- User -->
                 <li class="nav-item">
                     <a href="<?= base_url('pengajuan-kas') ?>" class="nav-link  <?= $uri->getSegment(1) == 'pengajuan-kas' ? 'active' : '' ?>">
                         <i class="fas fa-book-open nav-icon"></i>
